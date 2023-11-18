@@ -6,7 +6,7 @@ import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-erro
 import { AirportDto } from './airport.dto';
 import { AirportEntity } from './airport.entity';
 
-@Controller('airport')
+@Controller('airports')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class AirportController {
   constructor(private readonly airportService: AirportService) {}
