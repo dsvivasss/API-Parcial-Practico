@@ -32,6 +32,14 @@ export class AirlineService {
   }
 
   async create(airline: AirlineEntity): Promise<AirlineEntity> {
+    const date = new Date(airline.date);
+
+    if (date > new Date())
+      throw new BusinessLogicException(
+        'The date must be in the past',
+        BusinessError.INVALID_INPUT,
+      );
+
     return await this.airlineRepository.save(airline);
   }
 
@@ -40,10 +48,19 @@ export class AirlineService {
       await this.airlineRepository.findOne({
         where: { id },
       });
+
     if (!persistedAirline)
       throw new BusinessLogicException(
         'The airline with the given id was not found',
         BusinessError.NOT_FOUND,
+      );
+
+    const date = new Date(persistedAirline.date);
+
+    if (date > new Date())
+      throw new BusinessLogicException(
+        'The date must be in the past',
+        BusinessError.INVALID_INPUT,
       );
 
     return await this.airlineRepository.save({

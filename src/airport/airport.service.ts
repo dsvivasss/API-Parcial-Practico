@@ -32,6 +32,13 @@ export class AirportService {
   }
 
   async create(airport: AirportEntity): Promise<AirportEntity> {
+    if (airport.code.length !== 3) {
+      throw new BusinessLogicException(
+        'The airport code must be 3 characters long',
+        BusinessError.INVALID_INPUT,
+      );
+    }
+
     return await this.airportRepository.save(airport);
   }
 
@@ -45,6 +52,13 @@ export class AirportService {
         'The airport with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+
+    if (airport.code.length !== 3) {
+      throw new BusinessLogicException(
+        'The airport code must be 3 characters long',
+        BusinessError.INVALID_INPUT,
+      );
+    }
 
     return await this.airportRepository.save({
       ...persistedAirport,

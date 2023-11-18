@@ -1,7 +1,6 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { AirportEntity } from 'src/airport/airport.entity';
-
 /* eslint-disable prettier/prettier */
+import {Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { AirportEntity } from 'src/airport/airport.entity';
 
 @Entity()
 export class AirlineEntity {

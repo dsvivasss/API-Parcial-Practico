@@ -32,7 +32,7 @@ describe('AirportService', () => {
     for (let i = 0; i < 5; i++) {
       const airport: AirportEntity = await repository.save({
         name: faker.company.name(),
-        code: faker.location.zipCode(),
+        code: faker.string.alphanumeric(3),
         country: faker.location.country(),
         city: faker.location.city(),
       })
@@ -68,7 +68,7 @@ describe('AirportService', () => {
     const airport: AirportEntity = {
       id: '1000000',
       name: faker.company.name(),
-      code: faker.location.zipCode(),
+      code: faker.string.alphanumeric(3),
       country: faker.location.country(),
       city: faker.location.city(),
       airlines: []
@@ -88,7 +88,7 @@ describe('AirportService', () => {
   it('update should modify a airport', async () => {
     const airport: AirportEntity = airportsList[0];
     airport.name = "New name";
-    airport.code = "New code";
+    airport.code = "ABC";
 
     const updatedRecipy: AirportEntity = await service.update(airport.id, airport);
     expect(updatedRecipy).not.toBeNull();

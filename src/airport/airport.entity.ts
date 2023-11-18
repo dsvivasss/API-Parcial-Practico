@@ -1,7 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { AirlineEntity } from 'src/airline/airline.entity';
 
-/* eslint-disable prettier/prettier */
 
 @Entity()
 export class AirportEntity {
