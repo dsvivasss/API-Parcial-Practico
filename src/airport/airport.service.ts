@@ -35,7 +35,7 @@ export class AirportService {
     if (airport.code.length !== 3) {
       throw new BusinessLogicException(
         'The airport code must be 3 characters long',
-        BusinessError.INVALID_INPUT,
+        BusinessError.BAD_REQUEST,
       );
     }
 
@@ -53,10 +53,10 @@ export class AirportService {
         BusinessError.NOT_FOUND,
       );
 
-    if (airport.code.length !== 3) {
+    if (airport.code && airport.code.length !== 3) {
       throw new BusinessLogicException(
         'The airport code must be 3 characters long',
-        BusinessError.INVALID_INPUT,
+        BusinessError.BAD_REQUEST,
       );
     }
 

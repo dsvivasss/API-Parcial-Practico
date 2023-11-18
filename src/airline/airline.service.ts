@@ -37,7 +37,7 @@ export class AirlineService {
     if (date > new Date())
       throw new BusinessLogicException(
         'The date must be in the past',
-        BusinessError.INVALID_INPUT,
+        BusinessError.BAD_REQUEST,
       );
 
     return await this.airlineRepository.save(airline);
@@ -60,7 +60,7 @@ export class AirlineService {
     if (date > new Date())
       throw new BusinessLogicException(
         'The date must be in the past',
-        BusinessError.INVALID_INPUT,
+        BusinessError.BAD_REQUEST,
       );
 
     return await this.airlineRepository.save({
